@@ -477,7 +477,7 @@ function netmera() {
 		
 		function searchParams(pageParam, maxParam) {
 			var customCondition = "{";
-			$.each(_queries, function(val) {
+			$.each(_queries, function(index, val) {
 				customCondition += val + ",";
 			});
 			customCondition += "'" + _defaultParams.apiContentType + "' : '" + _objectName + "'}";
