@@ -495,7 +495,6 @@ function netmera() {
             }
 
             customCondition += "'" + _defaultParams.apiContentType + "' : '" + _objectName + "'}";
-            console.log(customCondition);
             _data[_request.params.page] = pageParam;
             _data[_request.params.max] = maxParam;
             _data[_request.params.customCondition] = customCondition;
