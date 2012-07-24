@@ -477,7 +477,7 @@ function netmera() {
 		
 		function searchParams(pageParam, maxParam) {
 			var customCondition = "{";
-			$.each(_queries, function(val) {
+			$.each(_queries, function(index, val) {
 				customCondition += val + ",";
 			});
 			customCondition += "'" + _defaultParams.apiContentType + "' : '" + _objectName + "'}";
@@ -574,10 +574,11 @@ function netmera() {
 		_contentService.get = function(callback) {
 			try {
 				_data[_request.params.path] = _path;
-				get(_data, function(entry) {
-					setContent(entry);
+				get(_data, function (entry) {
+					var ctx = new contentContext(entry.content.data[_defaultParams.apiContentType]);
+					ctx.init(entry);
 					if (jQuery.isFunction(callback))
-						callback();
+						callback(ctx);
 				});
 			} catch (e) {
 				throw new Error(_exceptions.messages["EC_IO_EXCEPTION"]);
