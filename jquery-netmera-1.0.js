@@ -608,25 +608,39 @@ function netmera() {
             _searchText = searchText;
         };
         _contentService.whereEqual = function (key, value) {
-            _queries.push("'" + key + "':'" + value + "'");
+            if (typeof (value) === 'string')
+                value = "'" + value + "'";
+            _queries.push("'" + key + "':" + value);
         };
         _contentService.whereGreaterThan = function (key, value) {
-            pushWhereKey(key, "$gt :'" + value + "'");
+            if (typeof (value) === 'string')
+                value = "'" + value + "'";
+            pushWhereKey(key, "$gt :" + value);
         };
         _contentService.whereLessThan = function (key, value) {
-            pushWhereKey(key, "$lt :'" + value + "'");
+            if (typeof (value) === 'string')
+                value = "'" + value + "'";
+            pushWhereKey(key, "$lt :" + value);
         };
         _contentService.whereNotEqual = function (key, value) {
-            pushWhereKey(key, "$ne :'" + value + "'");
+            if (typeof (value) === 'string')
+                value = "'" + value + "'";
+            pushWhereKey(key, "$ne :" + value);
         };
         _contentService.whereGreaterThanOrEqual = function (key, value) {
-            pushWhereKey(key, "$gte :'" + value + "'");
+            if (typeof (value) === 'string')
+                value = "'" + value + "'";
+            pushWhereKey(key, "$gte :" + value);
         };
         _contentService.whereLessThanOrEqual = function (key, value) {
-            pushWhereKey(key, "$lte :'" + value + "'");
+            if (typeof (value) === 'string')
+                value = "'" + value + "'";
+            pushWhereKey(key, "$lte :" + value);
         };
         _contentService.whereExists = function (key, fvalue) {
-            _queries.push("'" + key + "': {$exists :'" + value + "'}");
+            if (typeof (value) === 'string')
+                value = "'" + value + "'";
+            _queries.push("'" + key + "': {$exists :" + value + "}");
         };
         _contentService.whereMatches = function (key, value) {
             _queries.push("'" + key + "': {$regex :/" + value + "/}");
