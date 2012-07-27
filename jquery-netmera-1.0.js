@@ -638,9 +638,8 @@ function netmera() {
             pushWhereKey(key, "$lte :" + value);
         };
         _contentService.whereExists = function (key, fvalue) {
-            if (typeof (value) === 'string')
-                value = "'" + value + "'";
-            _queries.push("'" + key + "': {$exists :" + value + "}");
+            var bool = (value) ? true : false;
+            _queries.push("'" + key + "': {$exists :" + bool + "}");
         };
         _contentService.whereMatches = function (key, value) {
             _queries.push("'" + key + "': {$regex :/" + value + "/}");
