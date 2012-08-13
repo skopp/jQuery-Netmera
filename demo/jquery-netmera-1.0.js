@@ -499,7 +499,7 @@ function netmera() {
             _data[_request.params.max] = maxParam;
             _data[_request.params.customCondition] = customCondition;
 
-            if (_searchText) {
+            if (_searchText && typeof _searchText !== 'object') {
                 _data[_request.params.searchText] = _searchText;
                 _data[_request.params.sortBy] = "";
                 _data[_request.params.sortOrder] = "";
